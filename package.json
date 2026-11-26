@@ -1,0 +1,34 @@
+{
+  "name": "agent-leader-monorepo",
+  "private": true,
+  "version": "0.2.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pgjeffrey/agent-leader.git"
+  },
+  "type": "module",
+  "description": "Agent Leader 本地多智能体指挥系统（macOS / Windows 本地 C/S 双进程架构）",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:daemon": "npm --workspace @agent-leader/daemon run dev",
+    "dev:web": "npm --workspace @agent-leader/web run dev",
+    "build": "npm --workspace @agent-leader/protocol run build && npm --workspace @agent-leader/daemon run build && npm --workspace @agent-leader/web run build && npm --workspace @agent-leader/desktop run build",
+    "typecheck": "npm --workspace @agent-leader/protocol run typecheck && npm --workspace @agent-leader/daemon run typecheck && npm --workspace @agent-leader/web run typecheck && npm --workspace @agent-leader/desktop run typecheck",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.7"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true
+  }
+}
